@@ -42,60 +42,119 @@ use LDAP\Result;
 				
 			}
 
-			public function login(){
-				
-				if($this->session->has_userdata('id')){
-					redirect('user/home');
-				}
-				
-			
+			public function login()
+			{
 				$this->load->view('login_form');
 			}
 
-			public function login_user(){
-			
-				
-				$this->form_validation->set_rules('email','Email','required');
-				$this->form_validation->set_rules('password','Password','required');
+			public function login_user()
+			{
+				$email = $this->input->post('email',TRUE);
+				$password = $this->input->post('password',TRUE);
+				$validate = $this->user_model->validate($email,$password);
 
-				if($this->form_validation->run()==FALSE){
-					$this->load->view('login_form');
-				}else{
-					$email = $this->input->post('email');
-					$password = $this->input->post('password');
-				
-					if($user = $this->user_model->getUser($email))
+				if($validate->num_rows() > 0)
+				{
+
+					$data = $validate->row_array();
+					$name = $data['name'];
+					$email = $data['email'];
+					$role_id = $data['role_id'];
+					$sessdata = array('name'=>$name,'email'=>$email,'role_id'=>$role_id,'logged_in'=>TRUE);
+
+					$this->session->set_userdata($sessdata);
+					if($role_id === '1')
 					{
-						if($user->password==$password)
-						{
-							$this->session->set_userdata('id',$user->id);
-							redirect('user/home');
-							
-						}else{
-							echo "Login Error!";
-						}
-					}else{
-						echo "No account exists with this email!";
+						redirect('admin');
+					}
+					elseif($role_id === '2')
+					{
+						redirect('admin/manager');
+					}
+					elseif($role_id === '3')
+					{
+						redirect('admin/employee');
 					}
 				}
-
-			
+				else
+				{
+					echo $this->session->set_flashdata('msg','Username or Password is Wrong ?');
+					redirect('login');
+				}
 			}
 
 			public function home(){
-				
+				 
 				$this->load->view('home');
 			}
 
 			public function logout(){
 			
-				$this->session->unset_userdata('id');
+				$this->session->sess_destroy();
 				redirect('user/login');
 			}
  
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// $this->form_validation->set_rules('email','Email','required');
+	// $this->form_validation->set_rules('password','Password','required');
+
+	// if($this->form_validation->run()==FALSE){
+	// 	$this->load->view('login_form');
+	// }else{
+	// 	$email = $this->input->post('email');
+	// 	$password = $this->input->post('password');
 	
+	// 	if($user = $this->user_model->getUser($email))
+	// 	{
+	// 		if($user->password==$password)
+	// 		{
+	// 			$this->session->set_userdata('id',$user->id);
+	// 			redirect('user/home');
+				
+	// 		}else{
+	// 			echo "Login Error!";
+	// 		}
+	// 	}else{
+	// 		echo "No account exists with this email!";
+	// 	}
+	// }
 
-
-?>

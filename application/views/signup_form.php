@@ -131,9 +131,9 @@
           <label for="text">Is_Active_status</label>
         </div>
         <div class="col-75">
-          <input type="radio" id="is_active_status" name="is_active_status" value="Active">
+          <input type="radio" id="is_active_status" name="is_active_status" value="1">
           <label for="Active">Active</label><br>
-          <input type="radio" id="is_active_status" name="is_active_status" value="InActive">
+          <input type="radio" id="is_active_status" name="is_active_status" value="0">
           <label for="InActive">InActive</label><br>
 
         </div>

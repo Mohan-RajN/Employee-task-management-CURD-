@@ -11,9 +11,9 @@
 			}
 		
 			public function savedata(){
-		
+                $this->load->view('add_emp');
 				if($this->input->post('save'))
-				{
+				{ 
 					$data['user_id']=$this->input->post('user_id');
 					$data['task_details']=$this->input->post('task_details');
 					$data['task_assigned_to']=$this->input->post('task_assigned_to');
@@ -23,8 +23,8 @@
 					$data['task_completed_date']=$this->input->post('task_completed_date');
 					$data['time_for_the_hours']=$this->input->post('time_for_the_hours');
 					$data['spending_time_with_task']=$this->input->post('spending_time_with_task');
-
 					$response = $this->task_model->saverecords($data);
+                    
 					if($response==0)
 					{
 						echo "Insertred Successfully ";
@@ -41,6 +41,19 @@
 				$result['data']= $this->task_model->display_records();
 				$this->load->view('display_records', $result);
 			}
+            
+        public function deletedata()
+        {
+            $id=$this->input->get('id');
+            $response = $this->task_model->deleteRecordById($id);
+            if($response==true)
+            {
+                echo "Deleted Successfully";
+            }
+            else{
+                echo "Failed to Delete";
+            }
+        }
 			
 		public function updatedata()
 		{
@@ -60,23 +73,39 @@
 				$task_completed_date=$this->input->post('task_completed_date');
 				$time_for_the_hours=$this->input->post('time_for_the_hours');
 				$spending_time_with_task=$this->input->post('spending_time_with_task');
-				  
-                
+				 
 				$this->task_model->update_records($user_id,$task_details,$task_assigned_to,$task_assigned_from,$task_status,$task_started_date,$task_completed_date,$time_for_the_hours,$spending_time_with_task,$id);
-				echo "Employee Details Updated Successfully";
+				 
+                echo "Employee Details Updated Successfully";
 			}
 		}
 
-        public function deletedata()
-        {
-            $id=$this->input->get('$id');
-            $response = $this->task_model->deleteRecordsById($id);
-            if($response==true)
-            {
-                echo "Deleted Successfully";
-            }
-            else{
-                echo "Failed to Delete";
-            }
-        }
+		public function savetask(){
+			$this->load->view('add_task');
+			if($this->input->post('save'))
+			{
+				$data['user_id']=$this->input->post('user_id');
+				$data['task_details']=$this->input->post('task_details');
+				$data['task_assigned_to']=$this->input->post('task_assigned_to');
+				$data['task_assigned_from']=$this->input->post('task_assigned_from');
+				$data['task_status']=$this->input->post('task_status');
+				$data['task_started_date']=$this->input->post('task_started_date');
+				$data['task_completed_date']=$this->input->post('task_completed_date');
+				$data['time_for_the_hours']=$this->input->post('time_for_the_hours');
+				$data['spending_time_with_task']=$this->input->post('spending_time_with_task');
+				$response = $this->task_model->savetaskrecord($data);
+				
+				if($response==0)
+				{
+					echo "Add Task Successfully ";
+				}else{
+					echo "Failed ?";
+				}
+				
+
+			}
+
+
+
+	}
 	}
