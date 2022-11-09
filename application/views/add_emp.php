@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Add Employee Details</h1>
+          <h1>Add User Details</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -18,7 +18,26 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
+<style> 
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+ }
+
+ .col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+ }
+
+ .col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+ } 
+</style>
   <!-- Main content -->
   <section class="content">
 
@@ -26,56 +45,80 @@
     <div class="card">
       <div class="card-header">
 
-        <form method="post" action="<?= base_url() ?>task/savedata">
-          <table colspan="2" align="center">
-            <tr>
-              <td>User Id</td>
-              <td><input type="text" name="user_id"></td>
-            </tr>
-            <tr>
-              <td>Task Details</td>
-              <td><input type="text" name="task_details"> </td>
-            </tr>
-            <tr>
-              <td>Task Assigned To</td>
-              <td><input type="text" name="task_assigned_to"> </td>
-            </tr>
-            <tr>
-              <td>Task Assigned From</td>
-              <td><input type="text" name="task_assigned_from"> </td>
-            </tr>
-            <tr>
-              <td>Task Status</td>
-              <td><select name="task_status" id="task_status">
-                  <option value="0"></option>
-                  <option value="New Task">New Task</option>
-                  <option value="Finish">Finish</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Almost Completed">Almost Completed</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Task Started Date</td>
-              <td><input type="date" name="task_started_date"> </td>
-            </tr>
-            <tr>
-              <td>Task Completed Date</td>
-              <td><input type="date" name="task_completed_date"> </td>
-            </tr>
-            <tr>
-              <td>Time For The Hours</td>
-              <td><input type="time" name="time_for_the_hours"> </td>
-            </tr>
-            <tr>
-              <td>Spending Time With Task</td>
-              <td><input type="time" name="spending_time_with_task"> </td>
-            </tr>
-            <tr>
-              <td colspan="1" align="center"><input type="submit" name="save" value="save"></td>
-            </tr>
-          </table>
-        </form>
+      <div class="container">
+    <form method="post" action="<?= base_url('user/submit') ?>">
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="fname" name="name" placeholder="Enter your Name..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Email</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="email" placeholder="Enter your Email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="number">Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="number" name="number" placeholder="Enter your Number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="address">Address</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="address" name="address" placeholder="Enter your Address">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="role_id">Role Id</label>
+        </div>
+        <div class="col-75">
+          <select name="role_id" id="role_id">
+          <option value="0"></option>
+            <option value="1">Admin</option>
+            <option value="2">Manager</option>
+            <option value="3">Employee</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="text">Is Active status</label>
+        </div>
+        <div class="col-75">
+          <input type="radio" id="is_active_status" name="is_active_status" value="1">
+          <label for="Active">Active</label><br>
+          <input type="radio" id="is_active_status" name="is_active_status" value="0">
+          <label for="InActive">InActive</label><br>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-75">
+          <input type="password" id="password" name="password" placeholder="Enter your Password">
+        </div>
+      </div>
+
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
       </div>
     </div>
   </section>
@@ -83,17 +126,7 @@
 
 </div>
 </div>
-<div class="card-body">
-
-</div>
-<!-- /.card-body -->
-<div class="card-footer">
-  Footer
-</div>
-<!-- /.card-footer-->
-</div>
-<!-- /.card -->
-
+ 
 </section>
 <!-- /.content -->
 </div>

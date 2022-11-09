@@ -115,20 +115,17 @@
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="role_id">Role_Id</label>
+          <label for="role_id">Role Id</label>
         </div>
         <div class="col-75">
           <select name="role_id" id="role_id">
-          <option value="0"></option>
-            <option value="1">Admin</option>
-            <option value="2">Manager</option>
-            <option value="3">Employee</option>
+          <option value="3">Employee</option>
           </select>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="text">Is_Active_status</label>
+          <label for="text">Is Active status</label>
         </div>
         <div class="col-75">
           <input type="radio" id="is_active_status" name="is_active_status" value="1">
@@ -151,7 +148,7 @@
         <input type="submit" value="Submit">
       </div>
       <div class="row">
-        <a href="<?= base_url('user/login_user') ?>">Ready to Login </a>
+        <a href="<?= base_url('user/login') ?>">Ready to Login </a>
       </div>
     </form>
   </div>

@@ -26,7 +26,7 @@
         <div class="card">
             <div class="card-header">
 
-                <form method="post" action="<?= base_url() ?>task/savedata">
+                <form method="post" action="<?= base_url() ?>task/savetask">
                     <table colspan="2" align="center">
                         <tr>
                             <td>Project Name</td>
@@ -37,32 +37,35 @@
                             <td><input type="text" name="task_name"> </td>
                         </tr>
                         <tr>
-                            <td>Est Time</td>
-                            <td><input type="time" name="est_time"> </td>
+                            <td>Task Details</td>
+                            <td><input type="text" name="task_details"> </td>
                         </tr>
                         <tr>
-                            <td>Start Date</td>
-                            <td><input type="date" name="start_date"> </td>
-                        </tr>
-                        <!-- <tr>
-              <td>Task Status</td>
-              <td><select name="task_status" id="task_status">
-                  <option value="0"></option>
-                  <option value="New Task">New Task</option>
-                  <option value="Finish">Finish</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Almost Completed">Almost Completed</option>
-                </select>
-              </td>
-            </tr> -->
-                        <tr>
-                            <td>End Date</td>
-                            <td><input type="date" name="end_date"> </td>
+                            <td>Task Assigned From</td>
+                            <td><input type="number" name="task_assigned_from"> </td>
                         </tr>
                         <tr>
-                            <td>Assign Task</td>
-                            <td><input type="text" name="assign_task"> </td>
+                            <td>Task Assigned To</td>
+                            <td><input type="number" name="task_assigned_to"> </td>
                         </tr>
+                        <tr>
+                            <td>Time For the Hours</td>
+                            <td><input type="time" name="time_for_the_hours"> </td>
+                        </tr>
+                        <tr>
+                            <td>Spending Time With Task</td>
+                            <td><input type="time" name="spending_time_with_task"> </td>
+                        </tr>
+                        <tr>
+                            <td>Task Started date</td>
+                            <td><input type="date" name="task_started_date"> </td>
+                        </tr>
+                        <tr>
+                            <td>Task Complete date</td>
+                            <td><input type="date" name="task_completed_date"> </td>
+                        </tr>
+
+
                         <td colspan="1" align="center"><input type="submit" name="save" value="save"></td>
                         </tr>
                     </table>
@@ -78,11 +81,7 @@
 
 </div>
 <!-- /.card-body -->
-<div class="card-footer">
-    Footer
-</div>
-<!-- /.card-footer-->
-</div>
+
 <!-- /.card -->
 
 </section>

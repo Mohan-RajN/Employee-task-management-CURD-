@@ -1,107 +1,86 @@
+
+
+ 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
- * {
-  box-sizing: border-box;
- }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
 
- input[type=text],input[type=password], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
- }
-
- label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
- }
-
- input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
- }
-
- input[type=submit]:hover {
-  background-color: #45a049;
- }
-
- .container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
- }
-
- .col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
- }
-
- .col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
- } 
-
-  /* Clear floats after the columns */
- .row:after {
-  content: "";
-  display: table;
-  clear: both;
- }
-
- /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
- @media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
- }
-</style>
-</head> 
-<body>
-<h1>Login Form</h1>
-<div><?php echo validation_errors() ?>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url();?>plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?php echo base_url();?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url();?>dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+    <div><?php echo validation_errors() ?>
 </div>
 <?php echo $this->session->flashdata('msg');?>
-<div class="container">
-  <form method="post" action="<?=base_url('user/login_user')?>">
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Email</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="lname" name="email" placeholder="Your Email">
-      </div>
-    </div>
-		<div class="row">
-      <div class="col-25">
-        <label for="password">Password</label>
-      </div>
-      <div class="col-75">
-        <input type="password" id="password" name="password" placeholder="Your Password">
-      </div>
-    </div>
-    
-    <div class="row">
-      <input type="submit" value="Submit">
-    </div>
-    <div class="row">
-      <a href="<?=base_url('user/submit')?>">Create a User Id</a>
-    </div>
+      <form action="<?=base_url('user/login_user')?>" method="post">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" id="lname" name="email" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" id="password" name="password"  placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+           
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" value="Submit" class="btn btn-primary btn-block">Log In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
 
-  </form>
+      <div class="social-auth-links text-center mb-3">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="<?=base_url('user/submit')?>" class="text-center">Register a new membership</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
 </div>
+<!-- /.login-box -->
 
-
+<!-- jQuery -->
+<script src="<?php echo base_url();?>plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url();?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url();?>dist/js/adminlte.min.js"></script>
 </body>
 </html>

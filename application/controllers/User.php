@@ -93,6 +93,31 @@ use LDAP\Result;
 				$this->session->sess_destroy();
 				redirect('user/login');
 			}
+
+			
+			public function savedata(){
+                $this->load->view('add_emp');
+				if($this->input->post('save'))
+				{ 
+ 					$data['name']=$this->input->post('name');
+					$data['email']=$this->input->post('email');
+					$data['number']=$this->input->post('number');
+					$data['address']=$this->input->post('address');
+					$data['role_id']=$this->input->post('role_id');
+					$data['is_active_status']=$this->input->post('is_active_status');
+ 					$response = $this->task_model->saverecords($data);
+                    
+					if($response==0)
+					{
+						echo "User Successfully ";
+					}else{
+						echo "Failed to User";
+					}
+                    
+
+				}
+				
+			}
  
 	}
 

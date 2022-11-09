@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>View list Employee Details</h1>
+                    <h1>View list User Details</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -43,16 +43,13 @@
             <table class="table table-head-fixed text-nowrap">
                 <thead> 
                     <tr>
-                        <th>S No.</th>
                         <th>User Id</th>
-                        <th>Task Details</th>
-                        <th>Task Assigned To</th>
-                        <th>Task Assigned From</th>
-                        <th>Task Status</th>
-                        <th>Task Started Date</th>
-                        <th>Task Completed Date</th>
-                        <th>Time For The Hours</th>
-                        <th>Spending Time With Task</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Address</th>
+                        <th>Role Id</th>
+                        <th>IS Active Status</th>
                         <th>update</th>
                         <th>Delete</th>
                     </tr>
@@ -63,15 +60,12 @@
                 {
                     echo "<tr>";
                     echo "<td>".$i."</td>";
-                    echo "<td>".$row->user_id."</td>";
-                    echo "<td>".$row->task_details."</td>";
-                    echo "<td>".$row->task_assigned_to."</td>";
-                    echo "<td>".$row->task_assigned_from."</td>";
-                    echo "<td>".$row->task_status."</td>";
-                    echo "<td>".$row->task_started_date."</td>";
-                    echo "<td>".$row->task_completed_date."</td>";
-                    echo "<td>".$row->time_for_the_hours."</td>";
-                    echo "<td>".$row->spending_time_with_task."</td>";
+                    echo "<td>".$row->name."</td>";
+                    echo "<td>".$row->email."</td>";
+                    echo "<td>".$row->number."</td>";
+                    echo "<td>".$row->address."</td>";
+                    echo "<td>".$row->role_id."</td>";
+                    echo "<td>".$row->is_active_status."</td>";
                     echo "<td><a href='updatedata?id=".$row->id."'>Update</a></td>";
                     echo "<td><a href='deletedata?id=".$row->id."'>Delete</a></td>";
                     echo "</tr>";

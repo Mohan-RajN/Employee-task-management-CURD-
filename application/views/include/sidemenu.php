@@ -58,7 +58,7 @@
               <a href="#" class="nav-link">
                 <i class='fas fa-id-card-alt'></i>
                 <p>
-                  Employee Details
+                  User Details
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -66,7 +66,7 @@
                 <li class="nav-item">
                   <a href="<?php echo base_url(); ?>task/savedata" class="nav-link">
                     <i class='fas fa-plus-circle'></i>
-                    <p>Add New Employee</p>
+                    <p>Add New User</p>
                   </a>
                 </li>
               </ul>
@@ -74,7 +74,7 @@
                 <li class="nav-item">
                   <a href="<?php echo base_url(); ?>task/displaydata" class="nav-link">
                     <i class='fas fa-list'></i>
-                    <p>List Employees</p>
+                    <p>List User</p>
                   </a>
                 </li>
               </ul>
@@ -83,7 +83,7 @@
               <a href="#" class="nav-link">
                 <i class='fas fa-id-card-alt'></i>
                 <p>
-                  Manager Task
+                    Task
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -92,6 +92,14 @@
                   <a href="<?php echo base_url(); ?>task/savetask" class="nav-link">
                     <i class='fas fa-plus-circle'></i>
                     <p>Add Task</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url(); ?>task/displaytask" class="nav-link">
+                    <i class='fas fa-list'></i>
+                    <p>List Task</p>
                   </a>
                 </li>
               </ul>
@@ -108,13 +116,7 @@
                 <li class="nav-item">
                   <a href="<?= base_url('user/submit') ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Create Signup</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= base_url('user/logout') ?>" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Logout</p>
+                    <p>Create User</p>
                   </a>
                 </li>
               </ul>
@@ -133,23 +135,15 @@
               <a href="#" class="nav-link">
                 <i class='fas fa-id-card-alt'></i>
                 <p>
-                  Employee Details
+                  User Details
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url(); ?>task/savedata" class="nav-link">
-                    <i class='fas fa-plus-circle'></i>
-                    <p>Add New Employee</p>
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
                   <a href="<?php echo base_url(); ?>task/displaydata" class="nav-link">
                     <i class='fas fa-list'></i>
-                    <p>List Employees</p>
+                    <p>List User</p>
                   </a>
                 </li>
               </ul>
@@ -158,7 +152,7 @@
               <a href="#" class="nav-link">
                 <i class='fas fa-id-card-alt'></i>
                 <p>
-                  Manager Task
+                    Task
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -170,49 +164,11 @@
                   </a>
                 </li>
               </ul>
-            </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-cogs"></i>
-                    <p>
-                      Setting
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="<?= base_url('user/logout') ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Logout</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-            </li>
-
-  <!-- Employee -->
-          <?php else : ?>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                </p>
-              </a>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class='fas fa-id-card-alt'></i>
-                <p>
-                  Employee Details
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url(); ?>task/displaydata" class="nav-link">
+                  <a href="<?php echo base_url(); ?>task/displaytask" class="nav-link">
                     <i class='fas fa-list'></i>
-                    <p>List Employees</p>
+                    <p>List Task</p>
                   </a>
                 </li>
               </ul>
@@ -225,16 +181,40 @@
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+               
+            </li>
+            </li>
+
+  <!-- Employee -->
+          <?php else : ?>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+ 
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class='fas fa-id-card-alt'></i>
+                <p>
+                  Task
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+ 
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?= base_url('user/logout') ?>" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Logout</p>
+                  <a href="<?php echo base_url(); ?>task/displaytask" class="nav-link">
+                    <i class='fas fa-list'></i>
+                    <p>List Task</p>
                   </a>
                 </li>
               </ul>
             </li>
-            </li>
+ 
           <?php endif; ?>
         </ul>
       </nav>

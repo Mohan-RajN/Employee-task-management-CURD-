@@ -1,111 +1,138 @@
 <?php
 
-	class Task extends CI_Controller{
+class Task extends CI_Controller
+{
 
-			public function __construct(){
-				parent::__construct();
-				$this->load->helper('url');
- 				$this->load->model('task_model');
-				$this->load->database();
-				$this->load->library('session');
-			}
-		
-			public function savedata(){
-                $this->load->view('add_emp');
-				if($this->input->post('save'))
-				{ 
-					$data['user_id']=$this->input->post('user_id');
-					$data['task_details']=$this->input->post('task_details');
-					$data['task_assigned_to']=$this->input->post('task_assigned_to');
-					$data['task_assigned_from']=$this->input->post('task_assigned_from');
-					$data['task_status']=$this->input->post('task_status');
-					$data['task_started_date']=$this->input->post('task_started_date');
-					$data['task_completed_date']=$this->input->post('task_completed_date');
-					$data['time_for_the_hours']=$this->input->post('time_for_the_hours');
-					$data['spending_time_with_task']=$this->input->post('spending_time_with_task');
-					$response = $this->task_model->saverecords($data);
-                    
-					if($response==0)
-					{
-						echo "Insertred Successfully ";
-					}else{
-						echo "Failed to Inserted";
-					}
-                    
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('url');
+		$this->load->model('task_model');
+		$this->load->database();
+		$this->load->library('session');
+	}
 
-				}
-				
-			}
-			public function displaydata()
-			{
-				$result['data']= $this->task_model->display_records();
-				$this->load->view('display_records', $result);
-			}
-            
-        public function deletedata()
-        {
-            $id=$this->input->get('id');
-            $response = $this->task_model->deleteRecordById($id);
-            if($response==true)
-            {
-                echo "Deleted Successfully";
-            }
-            else{
-                echo "Failed to Delete";
-            }
-        }
-			
-		public function updatedata()
-		{
-			$id = $this->input->get('id');
-            // print_r($id);exit();
-			$result['data'] = $this->task_model->displayrecordsById($id);
-           
- 			$this->load->view('update_records', $result);
-			if($this->input->post('update'))    
-			{
-				$user_id = $this->input->post('user_id');
-				$task_details=$this->input->post('task_details');
-				$task_assigned_to=$this->input->post('task_assigned_to');
-				$task_assigned_from=$this->input->post('task_assigned_from');
-				$task_status=$this->input->post('task_status');
-				$task_started_date=$this->input->post('task_started_date');
-				$task_completed_date=$this->input->post('task_completed_date');
-				$time_for_the_hours=$this->input->post('time_for_the_hours');
-				$spending_time_with_task=$this->input->post('spending_time_with_task');
-				 
-				$this->task_model->update_records($user_id,$task_details,$task_assigned_to,$task_assigned_from,$task_status,$task_started_date,$task_completed_date,$time_for_the_hours,$spending_time_with_task,$id);
-				 
-                echo "Employee Details Updated Successfully";
+	public function savedata()
+	{
+		$this->load->view('add_emp');
+		if ($this->input->post('save')) {
+			$data['name'] = $this->input->post('name');
+			$data['email'] = $this->input->post('email');
+			$data['number'] = $this->input->post('number');
+			$data['address'] = $this->input->post('address');
+			$data['role_id'] = $this->input->post('role_id');
+			$data['is_active_status'] = $this->input->post('is_active_status');
+			$response = $this->task_model->saverecords($data);
+
+			if ($response == 0) {
+				echo "User Successfully ";
+			} else {
+				echo "Failed to User";
 			}
 		}
+	}
+	public function displaydata()
+	{
+		$result['data'] = $this->task_model->display_records();
+		$this->load->view('display_records', $result);
+	}
 
-		public function savetask(){
-			$this->load->view('add_task');
-			if($this->input->post('save'))
-			{
-				$data['user_id']=$this->input->post('user_id');
-				$data['task_details']=$this->input->post('task_details');
-				$data['task_assigned_to']=$this->input->post('task_assigned_to');
-				$data['task_assigned_from']=$this->input->post('task_assigned_from');
-				$data['task_status']=$this->input->post('task_status');
-				$data['task_started_date']=$this->input->post('task_started_date');
-				$data['task_completed_date']=$this->input->post('task_completed_date');
-				$data['time_for_the_hours']=$this->input->post('time_for_the_hours');
-				$data['spending_time_with_task']=$this->input->post('spending_time_with_task');
-				$response = $this->task_model->savetaskrecord($data);
-				
-				if($response==0)
-				{
-					echo "Add Task Successfully ";
-				}else{
-					echo "Failed ?";
-				}
-				
+	public function deletedata()
+	{
+		$id = $this->input->get('id');
+		$response = $this->task_model->deleteRecordById($id);
+		if ($response == true) {
+			echo "Deleted Successfully";
+		} else {
+			echo "Failed to Delete";
+		}
+	}
 
+	public function updatedata()
+	{
+		$id = $this->input->get('id');
+		// print_r($id);exit();
+		$result['data'] = $this->task_model->displayrecordsById($id);
+
+		$this->load->view('update_records', $result);
+		if ($this->input->post('update')) {
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$number = $this->input->post('number');
+			$address = $this->input->post('address');
+			$role_id = $this->input->post('role_id');
+			$is_active_status = $this->input->post('is_active_status');
+
+			$this->task_model->update_records($name, $email, $number, $address, $role_id, $is_active_status, $id);
+
+			echo "Employee Details Updated Successfully";
+		}
+	}
+
+	public function savetask()
+	{
+		$this->load->view('add_task');
+		if ($this->input->post('save')) {
+			$data['project_name'] = $this->input->post('project_name');
+			$data['task_name'] = $this->input->post('task_name');
+			$data['task_details'] = $this->input->post('task_details');
+			$data['task_assigned_from'] = $this->input->post('task_assigned_from');
+			$data['task_assigned_to'] = $this->input->post('task_assigned_to');
+			$data['time_for_the_hours'] = $this->input->post('time_for_the_hours');
+			$data['spending_time_with_task'] = $this->input->post('spending_time_with_task');
+			$data['task_started_date'] = $this->input->post('task_started_date');
+			$data['task_completed_date'] = $this->input->post('task_completed_date');
+			$data['task_status'] = $this->input->post('task_status');
+
+			$response = $this->task_model->savetaskrecord($data);
+
+			if ($response == 0) {
+				echo "Add Task Successfully ";
+			} else {
+				echo "Failed ?";
 			}
-
-
-
+		}
 	}
+
+	public function displaytask()
+	{
+		$result['data'] = $this->task_model->display_task();
+		$this->load->view('display_task', $result);
 	}
+
+	public function deletetask()
+	{
+		$id = $this->input->get('id');
+		$response = $this->task_model->deleteRecordsById($id);
+		if ($response == true) {
+			echo "Deleted Successfully";
+		} else {
+			echo "Failed to Delete";
+		}
+	}
+	
+	public function updatetask()
+	{
+		$id = $this->input->get('id');
+		// print_r($id);exit();
+		$result['data'] = $this->task_model->displaytaskrecordsById($id);
+
+		$this->load->view('update_task', $result);
+		if ($this->input->post('update')) {
+			$project_name = $this->input->post('project_name');
+			$task_name= $this->input->post('task_name');
+			$task_details= $this->input->post('task_details');
+			$task_assigned_from= $this->input->post('task_assigned_from');
+			$task_assigned_to= $this->input->post('task_assigned_to');
+			$time_for_the_hours= $this->input->post('time_for_the_hours');
+			$spending_time_with_task= $this->input->post('spending_time_with_task');
+			$task_started_date= $this->input->post('task_started_date');
+			$task_completed_date= $this->input->post('task_completed_date');
+			$task_status= $this->input->post('task_status');
+
+			$this->task_model->update_task($project_name, $task_name, $task_details, $task_assigned_from, $task_assigned_to, $time_for_the_hours,$spending_time_with_task,$task_started_date,$task_completed_date,$task_status, $id);
+
+			echo "Employee Details Updated Successfully";
+		}
+	}
+}
