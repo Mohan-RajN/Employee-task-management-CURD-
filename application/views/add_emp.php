@@ -94,6 +94,22 @@
       </div>
       <div class="row">
         <div class="col-25">
+          <label for="department">Department</label>
+        </div>
+        <div class="col-75">
+          <select name="department" id="department">
+          <option value="company">company</option>
+            <option value="IT team">IT team</option>
+            <option value="Development">Development</option>
+            <option value="Operation">Operation</option>
+            <option value="HR dept">HR dept</option>
+            <option value="Sale Marketing">Sale Marketing</option>
+            <option value="Finance">Finance</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
           <label for="text">Is Active status</label>
         </div>
         <div class="col-75">
@@ -114,6 +130,7 @@
       </div>
 
       <div class="row">
+      <input type="reset" name="Reset" value="Reset">
         <input type="submit" value="Submit">
       </div>
     </form>

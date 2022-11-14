@@ -42,11 +42,11 @@
                         </tr>
                         <tr>
                             <td>Task Assigned From</td>
-                            <td><input type="number" name="task_assigned_from"> </td>
+                            <td><input type="number" name="task_assigned_from" > </td>
                         </tr>
                         <tr>
                             <td>Task Assigned To</td>
-                            <td><input type="number" name="task_assigned_to"> </td>
+                            <td><input type="text" name="task_assigned_to"> </td>
                         </tr>
                         <tr>
                             <td>Time For the Hours</td>
@@ -64,9 +64,20 @@
                             <td>Task Complete date</td>
                             <td><input type="date" name="task_completed_date"> </td>
                         </tr>
-
-
-                        <td colspan="1" align="center"><input type="submit" name="save" value="save"></td>
+                        <tr>
+                            <td>Task Status</td>
+                            <td> <select name="task_status" id="task_status">
+                                    <option value="0"></option>
+                                    <option value="On process">On process</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Almost Completed">Almost Completed</option>
+                                </select>     
+                            </td>
+                        </tr>
+                        <td colspan="1" align="center">
+                        <input type="reset" name="Reset" value="Reset">
+                        <input type="submit" name="save" value="save"></td>
                         </tr>
                     </table>
                 </form>

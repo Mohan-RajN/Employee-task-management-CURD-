@@ -49,6 +49,7 @@
                         <th>Mobile Number</th>
                         <th>Address</th>
                         <th>Role Id</th>
+                        <th>Department</th>
                         <th>IS Active Status</th>
                         <th>update</th>
                         <th>Delete</th>
@@ -65,6 +66,7 @@
                     echo "<td>".$row->number."</td>";
                     echo "<td>".$row->address."</td>";
                     echo "<td>".$row->role_id."</td>";
+                    echo "<td>".$row->department."</td>";
                     echo "<td>".$row->is_active_status."</td>";
                     echo "<td><a href='updatedata?id=".$row->id."'>Update</a></td>";
                     echo "<td><a href='deletedata?id=".$row->id."'>Delete</a></td>";

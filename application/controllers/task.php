@@ -56,6 +56,7 @@ class Task extends CI_Controller
 
 		$this->load->view('update_records', $result);
 		if ($this->input->post('update')) {
+
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
 			$number = $this->input->post('number');
@@ -72,6 +73,7 @@ class Task extends CI_Controller
 	public function savetask()
 	{
 		$this->load->view('add_task');
+		
 		if ($this->input->post('save')) {
 			$data['project_name'] = $this->input->post('project_name');
 			$data['task_name'] = $this->input->post('task_name');
@@ -83,6 +85,7 @@ class Task extends CI_Controller
 			$data['task_started_date'] = $this->input->post('task_started_date');
 			$data['task_completed_date'] = $this->input->post('task_completed_date');
 			$data['task_status'] = $this->input->post('task_status');
+
 
 			$response = $this->task_model->savetaskrecord($data);
 
@@ -98,7 +101,7 @@ class Task extends CI_Controller
 	{
 		$result['data'] = $this->task_model->display_task();
 		$this->load->view('display_task', $result);
-	}
+	} 
 
 	public function deletetask()
 	{
@@ -114,11 +117,14 @@ class Task extends CI_Controller
 	public function updatetask()
 	{
 		$id = $this->input->get('id');
-		// print_r($id);exit();
+		///print_r($id);exit();
 		$result['data'] = $this->task_model->displaytaskrecordsById($id);
+		// print_r($result);exit();
 
 		$this->load->view('update_task', $result);
-		if ($this->input->post('update')) {
+		// print_r('hiii');exit();
+		if ($this->input->post('task')) {
+		 
 			$project_name = $this->input->post('project_name');
 			$task_name= $this->input->post('task_name');
 			$task_details= $this->input->post('task_details');
@@ -129,10 +135,28 @@ class Task extends CI_Controller
 			$task_started_date= $this->input->post('task_started_date');
 			$task_completed_date= $this->input->post('task_completed_date');
 			$task_status= $this->input->post('task_status');
+			// $comment_status= $this->input->post('comment_status');
 
-			$this->task_model->update_task($project_name, $task_name, $task_details, $task_assigned_from, $task_assigned_to, $time_for_the_hours,$spending_time_with_task,$task_started_date,$task_completed_date,$task_status, $id);
+			$this->task_model->update_record($project_name, $task_name, $task_details, $task_assigned_from, $task_assigned_to, $time_for_the_hours,$spending_time_with_task,$task_started_date,$task_completed_date,$task_status, $id);
 
-			echo "Employee Details Updated Successfully";
+ 		}
+	}
+	public function comment()
+	{
+		$id=$this->input->get('id');
+		// print_r($id);exit;
+		$result['data']=$this->task_model->displaycommentById($id);
+		$this->load->view('comment_status',$result);
+		// print_r('hoi');exit;
+		if($this->input->post('comment'))
+		{
+ 			$comment_status= $this->input->post('comment_status');
+
+			$this->task_model->update_comment($comment_status, $id);
 		}
 	}
+
+	//
+
+
 }

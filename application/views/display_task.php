@@ -54,6 +54,8 @@
                         <th>Task Started Date</th>
                         <th>Task Completed Date</th>
                         <th>Task Status</th>
+                        <th>Comment Status</th>
+                        <th>Comment</th>
                         <th>update</th>
                         <th>Delete</th>
                     </tr>
@@ -67,13 +69,15 @@
                     echo "<td>".$row->project_name."</td>";
                     echo "<td>".$row->task_name."</td>";
                     echo "<td>".$row->task_details."</td>";
-                    echo "<td>".$row->task_assigned_from."</td>";
+                    echo "<td>".$row->name."</td>";
                     echo "<td>".$row->task_assigned_to."</td>";
                     echo "<td>".$row->time_for_the_hours."</td>";
                     echo "<td>".$row->spending_time_with_task."</td>";
                     echo "<td>".$row->task_started_date."</td>";
                     echo "<td>".$row->task_completed_date."</td>";
                     echo "<td>".$row->task_status."</td>";
+                    echo "<td>".$row->comment_status."</td>";
+                    echo "<td><a href='comment?id=".$row->id."'>Comment</a></td>";
                     echo "<td><a href='updatetask?id=".$row->id."'>Update</a></td>";
                     echo "<td><a href='deletetask?id=".$row->id."'>Delete</a></td>";
                     echo "</tr>";

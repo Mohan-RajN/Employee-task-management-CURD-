@@ -104,82 +104,27 @@ use LDAP\Result;
 					$data['number']=$this->input->post('number');
 					$data['address']=$this->input->post('address');
 					$data['role_id']=$this->input->post('role_id');
+					$data['department']=$this->input->post('department');
 					$data['is_active_status']=$this->input->post('is_active_status');
  					$response = $this->task_model->saverecords($data);
-                    
+                     
 					if($response==0)
 					{
 						echo "User Successfully ";
 					}else{
 						echo "Failed to User";
 					}
-                    
 
 				}
 				
 			}
+			 
+		}
+
+
+
+
+
+
+
  
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// $this->form_validation->set_rules('email','Email','required');
-	// $this->form_validation->set_rules('password','Password','required');
-
-	// if($this->form_validation->run()==FALSE){
-	// 	$this->load->view('login_form');
-	// }else{
-	// 	$email = $this->input->post('email');
-	// 	$password = $this->input->post('password');
-	
-	// 	if($user = $this->user_model->getUser($email))
-	// 	{
-	// 		if($user->password==$password)
-	// 		{
-	// 			$this->session->set_userdata('id',$user->id);
-	// 			redirect('user/home');
-				
-	// 		}else{
-	// 			echo "Login Error!";
-	// 		}
-	// 	}else{
-	// 		echo "No account exists with this email!";
-	// 	}
-	// }
-
